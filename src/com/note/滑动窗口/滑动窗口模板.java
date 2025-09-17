@@ -5,7 +5,7 @@ public class 滑动窗口模板 {
         int[] nums = new int[1];
         int target = 0;
         int minLength = Integer.MIN_VALUE;
-        for (int l = 0, r = 0, current = 0; l < nums.length; r++) {
+        for (int l = 0, r = 0, current = 0; r <nums.length; r++) {
             //右指针r：每次循环中，r向右移动一位，表示扩展窗口，将新元素 nums[r] 纳入窗口。
             // 因此，需要将 nums[r] 加到当前和 current 中（即 current += nums[r];）。
             current += nums[r];
