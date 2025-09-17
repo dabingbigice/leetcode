@@ -45,20 +45,40 @@ public class _3_无重复字符的最长子串 {
         return maxLen;
     }
 
+    //hash适合判断是否存在重复元素，查询是o（c）
     public static int lengthOfLongestSubstringHash(String s) {
+        //set只作为用来存储数据的容器，删除时可以指定元素
         Set<Character> str = new HashSet<>();
         int maxLen = 0;
         for (int l = 0, r = 0; r < s.length(); r++) {
+            //判断set中是否存在子串重复的数据
             while (l <= r && str.contains(s.charAt(r))) {
-                //重复了
+                //如果待移除元素重复了，就一直移除，直到不存在为止
                 str.remove(s.charAt(l++));
+                //remove的是从左到右
+                //left指针右移到重复的那个元素+1位置
             }
+            //添加重复的那个新元素
             str.add(s.charAt(r));
             maxLen = Math.max(str.size(), maxLen);
         }
         return maxLen;
     }
 
+    //使用boolean位判断
+    public static int lengthOfLongestSubstringBit(String s) {
+        boolean[] occ = new boolean[256];
+        int maxLen = 0;
+        for (int l = 0, r = 0; r < s.length(); r++) {
+            while (l <= r && occ[s.charAt(r)]) {
+                //如果存在则进行位元素删除
+                occ[s.charAt(l++)] = false;
+            }
+            occ[s.charAt(r)] = true;
+            maxLen = Math.max(maxLen, r - l + 1);
+        }
+        return maxLen;
+    }
 
     public static void main(String[] args) {
         int max = lengthOfLongestSubstring(" ");
