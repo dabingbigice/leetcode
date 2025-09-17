@@ -67,6 +67,7 @@ public class _3_无重复字符的最长子串 {
 
     //使用boolean位判断
     public static int lengthOfLongestSubstringBit(String s) {
+        //将字符转换为int代表队数组索引，然后进行判断
         boolean[] occ = new boolean[256];
         int maxLen = 0;
         for (int l = 0, r = 0; r < s.length(); r++) {
