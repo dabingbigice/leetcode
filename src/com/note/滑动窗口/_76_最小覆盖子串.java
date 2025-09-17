@@ -62,6 +62,7 @@ public class _76_最小覆盖子串 {
         return true;
     }
 
+    //统计t的，然后去滑动s的
     public static String minWindowOk(String s, String t) {
         if (s.length() < t.length()) return "";
         if (s.equals(t)) return s;
@@ -83,7 +84,7 @@ public class _76_最小覆盖子串 {
                     //子串起始位置
                     st = l;
                 }
-                //符合，子串左指针右移
+                //符合，子串左指针右移，【缩小窗口，寻找最小子串长度】
                 sCount[charArray[l]]--;
                 l++;
             }
