@@ -81,6 +81,22 @@ public class _3_无重复字符的最长子串 {
         return maxLen;
     }
 
+    public static int lengthOfLongestSubstringBit2(String s) {
+        //将字符转换为int代表队数组索引，然后进行判断
+        short[] occ = new short[256];
+        int maxLen = 0;
+        for (int l = 0, r = 0; r < s.length(); r++) {
+            //纳入新元素
+            occ[s.charAt(r)]++;
+            while (l <= r && occ[s.charAt(r)] >1) {
+                //如果存在则进行位元素删，不满足条件，删除老元素，收缩窗口
+                occ[s.charAt(l++)]--;
+            }
+            maxLen = Math.max(maxLen, r - l + 1);
+        }
+        return maxLen;
+    }
+
     public static void main(String[] args) {
         int max = lengthOfLongestSubstring(" ");
         System.out.println(max);

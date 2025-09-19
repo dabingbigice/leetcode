@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class _187_重复的DNA序列 {
+public class _187_重复的DNA序列_固定窗口 {
     /*
     * DNA序列 由一系列核苷酸组成，缩写为 'A', 'C', 'G' 和 'T'.。
     例如，"ACGAATTCCG" 是一个 DNA序列 。
@@ -22,6 +22,7 @@ public class _187_重复的DNA序列 {
     输出：["AAAAAAAAAA"]
 * */
     public List<String> findRepeatedDnaSequences(String s) {
+
         Set<String> set = new HashSet<>();
         Set<String> list = new HashSet<>();
         if (s.length() <= 10) return new ArrayList<>();

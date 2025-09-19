@@ -1,9 +1,6 @@
 package com.note.滑动窗口;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class _567_字符串的排列 {
+public class _567_字符串的排列_固定窗口 {
 
     public boolean checkInclusion(String s1, String s2) {
 

@@ -75,9 +75,11 @@ public class _76_最小覆盖子串 {
         char[] charArray = s.toCharArray();
         int minLen = Integer.MAX_VALUE, st = -1;
         for (int l = 0, r = 0; r < charArray.length; r++) {
+            //纳入新元素
             sCount[charArray[r]] += 1;
             //检查子串是否符合标准，不符合则右指针移动
             while (l <= r && checkFlag(sCount, tCount)) {
+                //不符合要求，删除老元素，收缩窗口
                 if (r - l + 1 < minLen) {
                     //当前长度小于最小长度，更新
                     minLen = r - l + 1;

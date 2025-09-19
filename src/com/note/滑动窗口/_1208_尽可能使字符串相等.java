@@ -10,7 +10,7 @@ public class _1208_尽可能使字符串相等 {
             //纳入新元素
             maxCost -= Math.abs(s1[r] - t1[r]);
             while (l <= r && maxCost < 0) {
-                //如果纳入新元素过大，左指针收缩
+                //不满足条件，删除老元素，收缩窗口
                 maxCost += Math.abs(s1[l] - t1[l]);
                 l++;
             }
