@@ -12,9 +12,11 @@ public class _410_分割数组的最大值 {
     }
     boolean check(int x,int []nums,int k){
         int count=1,sum=0;
+        //判断前缀和，如果不满足了就分割，满足的话就继续加
         for(int num:nums){
             if(sum+num<=x)sum+=num;
             else{
+                //单个元素大于正在查找的值，分割失败
                 if(sum>x) return false;
                 count++;
                 sum=num;
