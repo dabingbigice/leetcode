@@ -24,6 +24,7 @@ public class _69_x的平方根 {
     }
 
     public int mySqrt3(int x) {
+        //寻找第一个满足条件的元素
         int l = 0, r = x;
         while (l < r) {
             int mid = (l + r) >> 1;

@@ -2,6 +2,7 @@ package com.note.二分查找;
 
 public class _162_寻找峰值 {
     public int findPeakElement(int[] nums) {
+        //寻找第一个满足条件的元素
         int r = nums.length - 1, l = 0;
         while (l < r) {
             int mid = ((l - r) >> 1) + r;
