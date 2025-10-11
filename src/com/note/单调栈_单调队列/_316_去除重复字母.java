@@ -36,9 +36,36 @@ public class _316_去除重复字母 {
         return str;
     }
 
+    public static String removeDuplicateLetters1(String s) {
+        Stack<Character> stack = new Stack<>();
+        int[] cnt = new int[128];
+        //统计剩余数字出现次数
+        for (char c : s.toCharArray()) {
+            cnt[c]++;
+        }
+        //当前已经构建的字符串
+        int[] map = new int[128];
+        for (int i = 0; i < s.length(); i++) {
+            cnt[s.charAt(i)]--;
+            //判断当前字符是否存在
+            if (map[s.charAt(i)] == 1) continue;
+            while (!stack.isEmpty() && s.charAt(i) < stack.peek() && cnt[stack.peek()] != 0) {
+                Character pop = stack.pop();
+                map[pop]--;
+
+            }
+            stack.push(s.charAt(i));
+
+            map[s.charAt(i)]++;
+        }
+        String str = "";
+        while (!stack.isEmpty()) str = stack.pop() + str;
+        return str;
+    }
+
     public static void main(String[] args) {
 //        removeDuplicateLetters("bcabc");
-        removeDuplicateLetters("cbacdcbc");
-        removeDuplicateLetters("cbacdcbc");
+        //       removeDuplicateLetters("cbacdcbc");
+        removeDuplicateLetters1("cbacdcbc");
     }
 }
