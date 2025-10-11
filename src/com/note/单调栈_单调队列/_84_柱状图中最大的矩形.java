@@ -72,7 +72,42 @@ public class _84_柱状图中最大的矩形 {
         return maxArea;
     }
 
+    public static int largestRectangleArea3(int[] heights) {
+        //两次单调栈，找当前元素的前后最小元素位置， 通过两个位置确定宽度
+        Stack<Integer> stack = new Stack<>();
+        int n = heights.length;
+        int[] right = new int[n];
+        //如果没有出现下一个比当前元素小的元素，那么宽就是整个数组
+        Arrays.fill(right, n);
+        for (int i = 0; i < heights.length; i++) {
+            while (!stack.isEmpty() && heights[stack.peek()] > heights[i]) {
+                //更新下一个小的元素位置
+                right[stack.pop()] = i;
+            }
+            stack.push(i);
+        }
+        int[] left = new int[n];
+        //如果没有出现下一个比当前元素小的元素，那么宽就是整个数组
+        Arrays.fill(left, -1);
+        stack = new Stack<>();
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && heights[stack.peek()] > heights[i]) {
+                //更新下一个小的元素位置
+                left[stack.pop()] = i;
+            }
+            stack.push(i);
+        }
+        //计算每一个元素的左右最大最小值距离
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            res = Math.max(res, ((right[i] - 1) - (left[i] + 1) + 1) * heights[i]);
+        }
+        return res;
+    }
+
+
     public static void main(String[] args) {
-        largestRectangleArea(new int[]{2, 1, 5, 6, 2, 3});
+//        largestRectangleArea(new int[]{2, 1, 5, 6, 2, 3});
+        largestRectangleArea3(new int[]{2, 1, 5, 6, 2, 3});
     }
 }
