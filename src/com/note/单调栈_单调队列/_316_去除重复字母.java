@@ -18,10 +18,10 @@ public class _316_去除重复字母 {
     public static String removeDuplicateLetters(String s) {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
-            while (!stack.isEmpty() && stack.peek() > s.charAt(i)) {
+            while (!stack.isEmpty() && stack.peek() > s.charAt(i) && !stack.contains(s.charAt(i))) {
                 //遇到更小的需要判断剩余的是否含有已有的
                 String substring = s.substring(i);
-                if (substring.contains(stack.peek().toString()) && !stack.contains(s.charAt(i))) {
+                if (substring.contains(stack.peek().toString())) {
                     //如果包含，弹出
                     stack.pop();
                 } else {
