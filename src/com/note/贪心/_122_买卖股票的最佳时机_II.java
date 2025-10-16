@@ -28,7 +28,7 @@ public class _122_买卖股票的最佳时机_II {
         for (int i = 0; i < prices.length - 1; i++) {
             int cnt = prices[i + 1] - prices[i];
             if (cnt > 0) {
-                rmb+=cnt;
+                rmb += cnt;
             }
         }
 
