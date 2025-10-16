@@ -11,8 +11,8 @@ public class _455_分发饼干 {
         int idx = 0;
         for (int j = 0; j < g.length; j++) {
             for (int i = idx; i < s.length; i++) {
-                if (i==s.length-1)return count;
                 if (g[j] > s[i]) {
+                    if (i == s.length - 1) return count;
                     continue;
                 }
                 idx = i;
@@ -22,6 +22,21 @@ public class _455_分发饼干 {
             }
         }
         return count;
+    }
+
+    public static int findContentChildren1(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int cnt = 0;
+        for (int i = 0, j = 0; i < s.length && j < g.length; i++) {
+            //拿饼干喂孩子
+            if (s[i] >= g[j]) {
+                cnt++;
+                //喂饱了
+                j++;
+            }
+        }
+        return cnt;
     }
 
     public static void main(String[] args) {
