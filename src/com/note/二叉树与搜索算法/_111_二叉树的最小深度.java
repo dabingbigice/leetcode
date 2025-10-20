@@ -14,7 +14,7 @@ public class _111_二叉树的最小深度 {
     }
 
     private void dfs(TreeNode root, int crdp) {
-        if (root == null) return;
+        if (root == null || crdp>dp) return;
         //处理深度
         if (root.right == root.left) {
             dp = Math.min(dp, crdp);
