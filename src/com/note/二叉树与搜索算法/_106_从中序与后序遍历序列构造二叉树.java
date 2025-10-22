@@ -14,7 +14,15 @@ public class _106_从中序与后序遍历序列构造二叉树 {
         return dfs(0, inorder.length - 1, 0, postorder.length - 1, inorder, postorder);
     }
 
+    /*
+    输入：inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
+    输出：[3,9,20,null,null,15,7]
+    * */
 
+    /*
+    1.后序的最后一个是root
+    2.将中序数组进行分割
+    * */
     TreeNode dfs(int in_left, int in_right, int post_left, int post_right, int[] inorder, int[] postorder) {
         if (in_left > in_right) return null;
         TreeNode node = new TreeNode(postorder[post_right]);
