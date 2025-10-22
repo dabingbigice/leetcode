@@ -15,6 +15,7 @@ public class _110_平衡二叉树 {
 
     int dsf(TreeNode treeNode) {
         if (treeNode == null) return 0;
+        //业务逻辑+递归
         int l = dsf(treeNode.left), r = dsf(treeNode.right);
         if (Math.abs(r - l) > 1) flag = false;
         return Math.max(l, r) + 1;

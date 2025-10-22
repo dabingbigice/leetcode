@@ -28,7 +28,9 @@ public class _112_路径总和 {
 
     boolean dfs1(TreeNode root, int cursum) {
         if (root == null) return false;
+        //业务逻辑
         if (root.left == root.right) return cursum == root.val;
+        //递归
         return dfs1(root.left, cursum - root.val) || dfs1(root.right, cursum - root.val);
     }
 

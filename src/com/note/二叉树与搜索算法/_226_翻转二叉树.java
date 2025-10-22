@@ -13,10 +13,11 @@ public class _226_翻转二叉树 {
 
     void dsf(TreeNode root) {
         if (root == null) return;
-        //交换
+        //交换，业务逻辑
         TreeNode temp = root.left;
         root.left = root.right;
         root.right = temp;
+        //递归
         dsf(root.left);
         dsf(root.right);
     }

@@ -15,7 +15,7 @@ public class _257_二叉树的所有路径 {
         //1.结束条件
         if (root == null) return;
 
-        //2.逻辑处理
+        //2.逻辑处理，业务逻辑
         //拼接
         StringBuffer cur = new StringBuffer(path);
         cur.append(root.val);
@@ -25,6 +25,7 @@ public class _257_二叉树的所有路径 {
             return;
         }
         cur.append("->");
+        //递归
         dfs(root.left, cur);
         dfs(root.right, cur);
     }

@@ -42,9 +42,10 @@ public class _100_相同的树 {
     }
 
     boolean dfs(TreeNode node1, TreeNode node2) {
-        //判断是否都是抵达叶子节点，如果都是就返回true
+        //判断是否都是抵达叶子节点，如果都是就返回true,业务逻辑
         if (node1 == null || node2 == null) return node1 == node2;
         if (node1.val != node2.val) return false;
+        //递归
         return dfs(node1.right, node2.right)&&dfs(node1.left, node2.left);
     }
 }

@@ -15,9 +15,11 @@ public class _404_左叶子之和 {
 
     void dfs(TreeNode treeNode) {
         if (treeNode == null) return;
+        //业务逻辑
         if (treeNode.left != null && treeNode.left.left == null && treeNode.left.right == null) {
             count += treeNode.left.val;
         }
+        //递归
         dfs(treeNode.left);
         dfs(treeNode.right);
     }

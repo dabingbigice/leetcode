@@ -33,9 +33,11 @@ public class _104_二叉树的最大深度 {
 
     void dfs(TreeNode root, int currentdp) {
         if (root == null) return;
+        //业务逻辑
         if (root.left == null && root.right == null) {
             dp = Math.max(currentdp, dp);
         }
+        //递归
         dfs(root.right, currentdp + 1);
         dfs(root.left, currentdp + 1);
     }

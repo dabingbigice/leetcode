@@ -15,11 +15,12 @@ public class _111_二叉树的最小深度 {
 
     private void dfs(TreeNode root, int crdp) {
         if (root == null || crdp>dp) return;
-        //处理深度
+        //处理深度，业务逻辑
         if (root.right == root.left) {
             dp = Math.min(dp, crdp);
             return;
         }
+        //递归
         dfs(root.right, crdp + 1);
         dfs(root.left, crdp + 1);
 

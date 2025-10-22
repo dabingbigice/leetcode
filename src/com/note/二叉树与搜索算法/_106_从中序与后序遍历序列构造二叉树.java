@@ -25,9 +25,11 @@ public class _106_从中序与后序遍历序列构造二叉树 {
     * */
     TreeNode dfs(int in_left, int in_right, int post_left, int post_right, int[] inorder, int[] postorder) {
         if (in_left > in_right) return null;
+        //业务逻辑
         TreeNode node = new TreeNode(postorder[post_right]);
         int in_index = map.get(postorder[post_right]);
         int left_cnt = in_index - in_left;
+        //递归
         node.left = dfs(in_left, in_index - 1, post_left, post_left + left_cnt - 1, inorder, postorder);
         node.right = dfs(in_index + 1, in_right, post_left + left_cnt, post_right - 1, inorder, postorder);
         return node;

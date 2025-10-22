@@ -31,6 +31,7 @@ public class _513_找树左下角的值 {
 
     void dfs(TreeNode root, int cur) {
         if (root == null) return;
+        //业务逻辑
         if (root.left != null && root.left.left == null && root.left.right == null && cur > dp) {
             //找到了当前层的
             dp = cur;
@@ -43,6 +44,7 @@ public class _513_找树左下角的值 {
             flag = root.right.val;
 
         }
+        //递归
         dfs(root.left, cur + 1);
         dfs(root.right, cur + 1);
 

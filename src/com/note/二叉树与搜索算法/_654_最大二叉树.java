@@ -13,9 +13,10 @@ public class _654_最大二叉树 {
 
     TreeNode buildTree(int l, int r, int[] nums) {
         if (l > r) return null;
-        //找到最大值，划分区间
+        //找到最大值，划分区间，业务逻辑
         int maxIndex = getMax(l, r, nums);
         TreeNode node = new TreeNode(nums[maxIndex]);
+        //递归
         node.left = buildTree(l, maxIndex - 1, nums);
         node.right = buildTree(maxIndex + 1, r, nums);
         return node;
