@@ -15,14 +15,15 @@ public class _93_复原IP地址 {
 
         public void backTrace(int startIndex, String s, LinkedList<String> path) {
             if (path.size() > 4) return; // 剪枝：如果已经超过4段，直接返回,
-            // 这一组四个分段不满足，删除最后一段，最后一段增加一位
+            // 这一组4个分段不满足，删除最后1段，最后1段增加1位
             if (startIndex == s.length() && path.size() == 4) {
-                //四个分段，并且整个已经字符串遍历完成
+                //4个分段，并且整个已经字符串遍历完成
+                //如果没有遍历完成就有4个分段，那么肯定是错的。
                 res.add(String.join(".", path)); // 找到一个有效IP
                 return;
             }
             for (int i = startIndex; i < s.length(); i++) {
-                //每次新增一位，然后判断是否满足条件。
+                //每次新增1位，然后判断是否满足条件。
                 String segment = s.substring(startIndex, i + 1);
                 //检查所有的可能
                 if (!isValid(segment)) break; // 当前段无效，后面更长的也无效，直接跳出循环
