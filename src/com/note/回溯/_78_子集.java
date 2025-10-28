@@ -10,6 +10,7 @@ public class _78_子集 {
     }
 
     List<List<Integer>> res = new ArrayList<>();
+
     void dfs(int index, List<Integer> path, int[] nums) {
         if (index == nums.length) {
             res.add(new ArrayList<>(path));
@@ -25,5 +26,9 @@ public class _78_子集 {
             path.remove(path.size() - 1);
         }
 
+    }
+
+    public static void main(String[] args) {
+        new _78_子集().subsets(new int[]{1, 2, 3});
     }
 }
