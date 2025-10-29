@@ -12,7 +12,9 @@ public class _198_打家劫舍 {
     }
 
     int[] dp;
-
+    /*
+    * 递归到最深处偷，依次累加找到最大值
+    * */
     int dfs(int idx, int[] nums) {
         // 基准情况：如果索引超出数组范围，说明没有房屋可偷，收益为0
         if (idx >= nums.length) return 0;
@@ -28,5 +30,10 @@ public class _198_打家劫舍 {
 
         // 取两种选择中的最大值作为从idx开始的最大收益，并存入备忘录
         return dp[idx] = Math.max(skipCurrent, robCurrent);
+    }
+
+    public static void main(String[] args) {
+//        new _198_打家劫舍().rob(new int[]{1,2,3,1});
+        new _198_打家劫舍().rob(new int[]{2,7,9,3,1});
     }
 }
