@@ -7,7 +7,8 @@ public class _198_打家劫舍 {
     public int rob(int[] nums) {
         dp = new int[nums.length];
         Arrays.fill(dp, -1);
-        return dfs(0, nums);
+        int res= dfs(0, nums);
+        return  res;
 
     }
 
@@ -34,6 +35,7 @@ public class _198_打家劫舍 {
 
     public static void main(String[] args) {
 //        new _198_打家劫舍().rob(new int[]{1,2,3,1});
-        new _198_打家劫舍().rob(new int[]{2,7,9,3,1});
+//        new _198_打家劫舍().rob(new int[]{2,7,9,3,1});
+        new _198_打家劫舍().rob(new int[]{2, 1, 1, 2});
     }
 }
