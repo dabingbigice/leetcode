@@ -9,9 +9,11 @@ public class _213_打家劫舍2 {
         if (nums.length == 1) return nums[0];
         dp = new int[nums.length];
         Arrays.fill(dp, -1);
+        //[0,....,n-1]
+        //[1,....,n]
+        //取max
         int temp0 = dfs(nums, 0, nums.length - 1);
         Arrays.fill(dp, -1);
-
         int temp1 = dfs(nums, 1, nums.length);
         return Math.max(temp0, temp1);
     }
