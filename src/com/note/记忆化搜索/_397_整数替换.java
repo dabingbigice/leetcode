@@ -13,12 +13,15 @@ public class _397_整数替换 {
 
     int dfs(long n) {
         if (n == 1) return 0;
+        //防止走相同的路
         if (map.containsKey(n)) return map.get(n);
         int ans = 0;
+        //如果n%2==0直接计算，不需要其他的步骤。
         if (n % 2 == 0) {
             //dfs(n + 1), dfs(n - 1)会重复的进入计算n % 2
             ans = dfs(n / 2) + 1;
         } else {
+            //如果n%2!=0需要其他的步骤,且n+1与n-1会走大部分相同的计算。
             ans = Math.min(dfs(n + 1), dfs(n - 1)) + 1;
         }
         map.put(n, ans);
