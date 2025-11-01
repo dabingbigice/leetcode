@@ -12,7 +12,6 @@ public class _64_最小路径和 {
         return res;
 
     }
-
     int dp[][];
 
     /*
@@ -23,6 +22,7 @@ public class _64_最小路径和 {
         //到边界了
         if (downIndex == grid.length - 1 && rightIndex == grid[downIndex].length - 1)
             return grid[downIndex][rightIndex];
+        //出边界了
         if (downIndex == grid.length || rightIndex == grid[downIndex].length)
             return Integer.MAX_VALUE;
         if (dp[downIndex][rightIndex] != -1) return dp[downIndex][rightIndex];
