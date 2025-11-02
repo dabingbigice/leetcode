@@ -13,6 +13,7 @@ public class _322_零钱兑换 {
     int dp[];
 
     int dfs(int cur, int[] coins, int amount) {
+//        ==表示这一步有效，！=表示超过了，返回一个大值让min取不到
         if (cur >= amount) return cur == amount ? 0 : 10010;
         if (dp[cur] != -1) return dp[cur];
         int ans = 10010;
