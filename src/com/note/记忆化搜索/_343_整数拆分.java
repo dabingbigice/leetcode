@@ -13,8 +13,8 @@ public class _343_整数拆分 {
         if (dp[n] != 0) return dp[n]; // 记忆化检查：已计算则直接返回
         int ans = 0;
         // 循环遍历所有可能的拆分点 i（从1到n-2）
-        for (int i = 1; i <= n - 2; i++) {
-            // 核心计算：比较两种拆分方案的最大值。把当前的n拆为n-i和i。一直拆下去
+        for (int i = 1; i <n; i++) {
+            // 核心计算：比较两种拆分方案的最大值。  把当前的n拆为n-i和i。一直拆下去
             ans = Math.max(ans, Math.max(i * (n - i), dfs(n - i) * i));
         }
         return dp[n] = ans; // 存储结果并返回
