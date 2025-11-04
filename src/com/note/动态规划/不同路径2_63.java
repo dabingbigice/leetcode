@@ -4,12 +4,13 @@ import java.util.Arrays;
 
 public class 不同路径2_63 {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-
         int[][] dp = new int[obstacleGrid.length][obstacleGrid[0].length];
         boolean flag = false;
         for (int i = 0; i < dp[0].length; i++) {
             if (obstacleGrid[0][i] != 1 && !flag)
                 dp[0][i] = 1;
+
+            //第一行存在一个1，此后的路走不通
             if (obstacleGrid[0][i] == 1) flag = true;
             if (flag) dp[0][i] = 0;
         }
@@ -18,6 +19,8 @@ public class 不同路径2_63 {
         for (int i = 0; i < dp.length; i++) {
             if (obstacleGrid[i][0] != 1)
                 dp[i][0] = 1;
+
+            //第一列存在一个1，此后的路走不通
             if (obstacleGrid[i][0] == 1) flag = true;
             if (flag) dp[i][0] = 0;
         }
