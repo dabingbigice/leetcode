@@ -20,7 +20,7 @@ public class 使用最小花费爬楼梯_746 {
         dp[0] = cost[0];
         dp[1] = cost[1];
         //最后一步已经支付，故dp[dp.length - 1], dp[dp.length - 2]都可以到达终点
-        //所以去小值
+        //所以取小值
         for (int i = 2; i < cost.length; i++) {
             dp[i] = Math.min(cost[i] + dp[i - 2], cost[i] + dp[i - 1]);
         }
