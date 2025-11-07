@@ -17,7 +17,7 @@ public class 零钱兑换_322 {
             for (int j = coins[i]; j <= amount; j++) {  // 遍历背包容量（金额），正序以实现完全背包
                 // 确保j - coins[i]是有效状态（即可达状态）
                 if (dp[j - coins[i]] != Integer.MAX_VALUE) {
-                    // 状态转移：核心逻辑，使用当前硬币coins[i]
+                    // 状态转移：核心逻辑，使用当前硬币coins[i],没装满的都是最大值，取不到
                     dp[j] = Math.min(dp[j], 1 + dp[j - coins[i]]); // 修正了这里，使用coins[i]
                 }
             }
