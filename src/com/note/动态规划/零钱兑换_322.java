@@ -6,7 +6,7 @@ public class 零钱兑换_322 {
 
     public int coinChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
-        // 初始化dp数组
+        // 初始化dp数组，防止数值被覆盖，取最大值
         for (int j = 0; j < dp.length; j++) {
             dp[j] = Integer.MAX_VALUE;
         }
