@@ -31,4 +31,22 @@ public class 单词拆分_139 {
         // 返回结果：dp[s.length()]表示整个字符串s是否能被拆分
         return dp[s.length()];
     }
+
+    public boolean wordBreak1(String s, List<String> wordDict) {
+        //定义dp[i]：容量为i的背包是否能装满。对顺序敏感，排列数
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        HashSet<String> set = new HashSet<>(wordDict);
+        //2.初始化dp[0]=true,作为状态转移的初始
+        for (int i = 1; i <= s.length(); i++) {//背包
+            for (int j = 0; j < i; j++) {//物品
+                //容量为i的背包依次遍历所有物品，是否能装下.sub是[j,i)。所以i<=s.len
+                if (dp[j] && set.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
 }
