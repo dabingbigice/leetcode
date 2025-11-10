@@ -1,6 +1,4 @@
-package com.note.动态规划;
-
-import java.util.Arrays;
+package com.代码随想录.动态规划;
 
 public class 打家劫舍_198 {
     public int rob(int[] nums) {

@@ -1,6 +1,4 @@
-package com.note.动态规划;
-
-import java.util.Arrays;
+package com.代码随想录.动态规划;
 
 public class 分割等和子集_416 {
     public boolean canPartition(int[] nums) {

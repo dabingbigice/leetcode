@@ -1,4 +1,4 @@
-package com.note.动态规划;
+package com.代码随想录.动态规划;
 
 import java.util.Arrays;
 import java.util.HashSet;
