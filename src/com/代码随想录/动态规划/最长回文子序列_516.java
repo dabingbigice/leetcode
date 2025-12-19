@@ -1,6 +1,5 @@
 package com.代码随想录.动态规划;
 
-import com.sun.tools.javac.util.StringUtils;
 
 public class 最长回文子序列_516 {
     public int longestPalindromeSubseq(String s) {
