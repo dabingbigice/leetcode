@@ -1,4 +1,4 @@
-package com.代码随想录.二刷;
+package com.代码随想录.二刷._01背包;
 
 import java.util.Arrays;
 

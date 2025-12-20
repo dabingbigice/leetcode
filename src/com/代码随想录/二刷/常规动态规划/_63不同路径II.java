@@ -1,4 +1,4 @@
-package com.代码随想录.二刷;
+package com.代码随想录.二刷.常规动态规划;
 
 public class _63不同路径II {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {

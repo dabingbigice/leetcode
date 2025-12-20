@@ -1,4 +1,4 @@
-package com.代码随想录.二刷;
+package com.代码随想录.二刷._01背包;
 
 public class _474一和零 {
     public int findMaxForm(String[] strs, int m, int n) {

@@ -14,22 +14,27 @@ public class 最大子序和_53 {
      * 参考动态规划解法：[2,3,5](@ref)
      */
     public int maxSubArray(int[] nums) {
-        // 初始化dp数组，dp[i]表示以nums[i]结尾的最大子数组和
+        // 边界情况：如果数组长度小于2，直接返回唯一的元素
+        if (nums.length<2) return nums[0];
+        // 创建dp数组，dp[i]表示以nums[i]结尾的最大子数组和
         int[] dp = new int[nums.length];
-        // 基准情况：第一个元素无法与更前元素组合，其最大和即为自身
+        // 初始化：以第一个元素结尾的最大子数组和就是它自己
         dp[0] = nums[0];
-        // 初始化当前最大值（但此处代码有误：应初始化为dp[0]，而非0。若数组全负数，max将错误记录0）
-        int max = 0;  // 错误点：max应初始化为dp[0] = nums[0]，因为子数组不能为空，最大和可能为负数
-        // 遍历数组，计算每个位置结尾的最大子数组和
+        // 初始化结果，使用一个很小的负数（这里用-100000）
+        // 注意：这里有个小问题，应该直接用dp[0]初始化
+        int res = dp[0];
+        // 从第二个元素开始遍历
         for (int i = 1; i < nums.length; i++) {
-            // 状态转移：选择当前元素单独成组，或与前一个子数组连接（仅当连接能增加和时）
+            // 状态转移方程：
+            // 要么只包含当前元素nums[i]
+            // 要么包含当前元素并延续之前的子数组dp[i-1]
             dp[i] = Math.max(nums[i], dp[i - 1] + nums[i]);
             // 更新全局最大值
-            max = Math.max(dp[i], max);
+            res = Math.max(res, dp[i]);
         }
-        // 打印dp数组用于调试（可选）：显示以每个位置结尾的最大和
+        // 打印dp数组用于调试（可以看到每个位置的最大子数组和）
         System.out.println(Arrays.toString(dp));
-        // 返回最终结果（当前代码有误：应返回max，而非dp末尾元素。例如数组[-1, -2]将错误返回-2，实际最大和为-1）
-        return dp[nums.length - 1];  // 错误点：应改为 return max;
+        // 返回全局最大值
+        return res;
     }
 }

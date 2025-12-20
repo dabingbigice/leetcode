@@ -1,4 +1,4 @@
-package com.代码随想录.二刷;
+package com.代码随想录.二刷._01背包;
 
 public class _416分割等和子集 {
     public boolean canPartition(int[] nums) {

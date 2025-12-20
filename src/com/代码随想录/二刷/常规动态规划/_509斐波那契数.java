@@ -1,14 +1,15 @@
-package com.代码随想录.二刷;
+package com.代码随想录.二刷.常规动态规划;
 
 import java.util.Arrays;
 
-public class _70爬楼梯 {
+public class _509斐波那契数 {
 
-    public int climbStairs(int n) {
-        //定义dpi的含义，递推公式，初始化，遍历顺序
+
+    public int fib(int n) {
+        //定义下标，递推公式，初始化，遍历顺序
         int dp[] = new int[n + 1];
+        if (n==0) return 0;
         dp[1] = 1;
-        dp[0] = 1;
         for (int i = 2; i <= n; i++) {
             dp[i] = dp[i - 1] + dp[i - 2];
         }

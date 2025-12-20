@@ -1,4 +1,4 @@
-package com.代码随想录.二刷;
+package com.代码随想录.二刷._01背包;
 
 public class _343整数拆分 {
     public int integerBreak(int n) {
