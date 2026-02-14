@@ -21,6 +21,7 @@ public class _122买卖股票的最佳时机II {
         int[] dp = new int[prices.length];
         if (prices.length < 2) return 0;
         for (int i = 1; i < prices.length; i++) {
+            //持有 or 卖出
             dp[i] = Math.max(dp[i - 1], dp[i - 1] + prices[i] - prices[i - 1]);
         }
         System.out.println(Arrays.toString(dp));

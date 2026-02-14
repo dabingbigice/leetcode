@@ -154,7 +154,7 @@ public class Test {
 
     //完全背包
     public boolean wordBreak(String s, List<String> wordDict) {
-        boolean[] dp = new boolean[s.length() +1];
+        boolean[] dp = new boolean[s.length() + 1];
         dp[0] = true;
         for (int i = 1; i <= s.length(); i++) {
             for (int j = 0; j < i; j++) {
@@ -166,4 +166,135 @@ public class Test {
         return dp[s.length()];
     }
 
+    public int numSquares(int n) {
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, 10000);
+        dp[0] = 0;
+        for (int i = 1; i * i <= n; i++) {
+            int se = i * i;
+            for (int j = se; j <= n; j++) {
+                //当前的数-平方数 +1
+                //如果当前的数-平方数后的那个temp值没有平方数，则会取到10000
+                dp[j] = Math.min(dp[j], dp[j - se] + 1);
+            }
+        }
+        return dp[n];
+    }
+
+    public int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, 10000);
+        dp[0] = 0;
+        for (int i = 0; i < coins.length; i++) {
+            for (int j = coins[i]; j <= amount; j++) {
+                dp[j] = Math.min(dp[j], dp[j - coins[i]] + 1);
+            }
+        }
+        return dp[amount] == 10000 ? -1 : dp[amount];
+    }
+
+    public int combinationSum4(int[] nums, int target) {
+        int dp[] = new int[target + 1];
+        dp[0] = 1;
+//        如果先遍历物品（nums[i]）再遍历背包容量（j），那么每个物品在计算过程中被固定的顺序所限制。
+        for (int j = 1; j <= target; j++) {
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] <= j)
+                    //dp[0]是刚好减掉当前值为0,说明当前值满足要求
+//                    j=1: dp[1] = dp[1] + dp[0] = 0+1 = 1(方式：1)
+//                    不使用nums[i]有多少种方法(dp[j])+使用nums[i]有多少种方法(dp[j-nums[i])
+                    dp[j] += dp[j - nums[i]];
+            }
+        }
+        return dp[target];
+
+    }
+
+    public int change(int amount, int[] coins) {
+        int[] dp = new int[amount + 1];
+        dp[0] = 1;
+        for (int i = 0; i < coins.length; i++) {
+            for (int j = coins[i]; j <= amount; j++) {
+                dp[j] += dp[j - coins[i]];
+            }
+        }
+        return dp[amount];
+    }
+    //外层物品内层背包——>背包容量倒序遍历是为了保证物品i只被放入一次！——>物品只会被放入一背包 (01背包) 组合数
+    //外层物品内层背包——>正序遍历物品i会被放入多次
+    //外层背包，内层物品——>排列数
+
+    public int maxProfit(int[] prices) {
+        Integer minCost = Integer.MAX_VALUE;
+        Integer profit = 0;
+        for (int price : prices) {
+            minCost = Math.min(price, minCost);
+            profit = Math.max(profit, price - minCost);
+        }
+        return profit;
+    }
+
+    public int maxProfit1(int[] prices) {
+        int[][] dp = new int[prices.length][2];
+        dp[0][0] = -prices[0];//持有股票
+        dp[0][1] = 0;//不持有股票
+        for (int i = 1; i < prices.length; i++) {
+            //持有最小股票价格
+            dp[i][0] = Math.max(dp[i - 1][0], -prices[i]);
+            //卖出最大股票价格
+            dp[i][1] = Math.max(dp[i - 1][0] + prices[i], dp[i - 1][1]);
+        }
+        return dp[prices.length - 1][1];
+    }
+
+//    public  int maxProfit(int[] prices) {
+//        int[] dp = new int[prices.length];
+//        if (prices.length < 2) return 0;
+//        for (int i = 1; i < prices.length; i++) {
+//            dp[i] = Math.max(dp[i - 1], dp[i - 1] + prices[i] - prices[i - 1]);
+//        }
+//        return dp[prices.length - 1];
+//    }
+
+    public int maxProfit2(int[] prices) {
+        int[][] dp = new int[prices.length][2];
+        dp[0][0] = -prices[0];//持有股票
+        dp[0][1] = 0;//不持有股票
+        for (int i = 1; i < prices.length; i++) {
+            //持有最小股票价格
+            dp[i][0] = Math.max(dp[i - 1][0], -prices[i]);
+            //卖出最大股票价格
+            dp[i][1] = Math.max(dp[i - 1][0] + prices[i], dp[i - 1][1]);
+        }
+        return dp[prices.length - 1][1];
+    }
+
+    public int rob(int[] nums) {
+        int[] dp = new int[nums.length];
+        if (nums.length < 2) return nums[0];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            //不偷，偷
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+        }
+        return dp[nums.length - 1];
+    }
+
+    public int rob2(int[] nums) {
+        if (nums.length < 2) return nums[0];
+        if (nums.length == 2) return Math.max(nums[0], nums[1]);
+        return Math.max(rob(Arrays.copyOfRange(nums, 0, nums.length - 1)), rob(Arrays.copyOfRange(nums, 1, nums.length)));
+    }
+
+    public int maxProfit3(int[] prices, int fee) {
+        int dp[][] = new int[prices.length][2];
+        dp[0][0] = -prices[0];
+        dp[0][1] = 0;
+        for (int i = 1; i < prices.length; i++) {
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] - prices[i]);
+            dp[i][1] = Math.max(dp[i - 1][1], prices[i] + dp[i - 1][0] - fee);
+        }
+        return dp[dp.length - 1][1];
+    }
 }
