@@ -264,7 +264,7 @@ public class Test {
             //持有最小股票价格
             dp[i][0] = Math.max(dp[i - 1][0], -prices[i]);
             //卖出最大股票价格
-            dp[i][1] = Math.max(dp[i - 1][0] + prices[i], dp[i - 1][1]);
+            dp[i][1] = Math.max(dp[i - 1][1],dp[i - 1][0] + prices[i]);
         }
         return dp[prices.length - 1][1];
     }

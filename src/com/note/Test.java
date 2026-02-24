@@ -13,17 +13,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class Test {
-    public List<Integer> inorderTraversal(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
-        ArrayList<Integer> res = new ArrayList<>();
-        stack.push(root);
-        TreeNode cur = root;
-        while (cur != null || !res.isEmpty()) {
-            if (cur != null) {
-                //一直向左
-                stack.push(cur.)
-            }
-        }
-    }
+
 
 }
