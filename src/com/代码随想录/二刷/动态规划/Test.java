@@ -330,6 +330,7 @@ public class Test {
         dp[0] = nums[0];
         int max = nums[0];
         for (int i = 1; i < nums.length; i++) {
+            //前面累计值没有当前值大，就从当前值开始
             dp[i] = Math.max(nums[i], dp[i - 1] + nums[i]);
             max = Math.max(max, dp[i]);
         }
