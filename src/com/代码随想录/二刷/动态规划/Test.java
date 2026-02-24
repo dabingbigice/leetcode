@@ -264,7 +264,7 @@ public class Test {
             //持有最小股票价格
             dp[i][0] = Math.max(dp[i - 1][0], -prices[i]);
             //卖出最大股票价格
-            dp[i][1] = Math.max(dp[i - 1][1],dp[i - 1][0] + prices[i]);
+            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] + prices[i]);
         }
         return dp[prices.length - 1][1];
     }
@@ -296,5 +296,43 @@ public class Test {
             dp[i][1] = Math.max(dp[i - 1][1], prices[i] + dp[i - 1][0] - fee);
         }
         return dp[dp.length - 1][1];
+    }
+
+    public int lengthOfLIS(int[] nums) {
+        int dp[] = new int[nums.length];
+        Arrays.fill(dp, 1);
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) dp[i] = Math.max(dp[j] + 1, dp[i]);
+            }
+        }
+        Arrays.sort(dp);
+        return dp[nums.length - 1];
+    }
+
+    public int findLengthOfLCIS(int[] nums) {
+        int[] dp = new int[nums.length];
+        Arrays.fill(dp, 1);
+        int max = 1;
+        for (int i = 1; i < nums.length; i++) {
+            //连续递增，只要不成立，当前值就是默认值1。
+            if (nums[i - 1] < nums[i]) {
+                dp[i] = dp[i - 1] + 1;
+                max = Math.max(max, dp[i]);
+            }
+        }
+        return max;
+    }
+
+    public int maxSubArray(int[] nums) {
+        if (nums.length < 2) return nums[0];
+        int dp[] = new int[nums.length];
+        dp[0] = nums[0];
+        int max = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            dp[i] = Math.max(nums[i], dp[i - 1] + nums[i]);
+            max = Math.max(max, dp[i]);
+        }
+        return max;
     }
 }
