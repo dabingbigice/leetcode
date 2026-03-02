@@ -336,4 +336,52 @@ public class Test {
         }
         return max;
     }
+
+    public int countSubstrings(String s) {
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        int res = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            for (int j = i; j < s.length(); j++) {
+                if (s.charAt(i - 1) == s.charAt(j - 1)) {
+                    if (Math.abs(j - i) < 2) {
+                        res++;
+                        dp[i][j] = true;
+                    } else if (dp[i + 1][j - 1]) {
+                        dp[i][j] = true;
+                        res++;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    public int longestPalindromeSubseq(String s) {
+        int[][] dp = new int[s.length()][s.length()];
+        for (int i = s.length() - 1; i >= 0; i++) {
+            dp[i][i] = 1;
+            for (int j = i + 1; j < s.length(); j++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    dp[i][j] = dp[i + 1][j - 1] + 2;
+                } else {
+                    dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[0][s.length()];
+    }
+
+    public int findLength(int[] nums1, int[] nums2) {
+        int[][] dp = new int[nums1.length + 1][nums2.length + 1];
+        int res = 0;
+        for (int i = 1; i < nums1.length + 1; i++) {
+            for (int j = 1; j < nums2.length + 1; j++) {
+                if (nums1[i - 1] == nums2[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    res = Math.max(dp[i][j], res);
+                }
+            }
+        }
+        return res;
+    }
 }
