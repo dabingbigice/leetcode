@@ -13,7 +13,8 @@ public class _72编辑距离 {
             for (int j = 1; j <= word2.length(); j++) {
                 //相等
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)) dp[i][j] = dp[i - 1][j - 1];
-                    //操作                       (替换,删,插入)
+                    //操作                       (替换,删/插入),
+                    // 替换i跟j都是一样的效果，删跟插都是在一样的位置操作，对于[i - 1][j]+1,[i][j - 1]+1
                 else dp[i][j] = Math.min(dp[i - 1][j - 1] + 1, Math.min(dp[i - 1][j], dp[i][j - 1]) + 1);
             }
         }

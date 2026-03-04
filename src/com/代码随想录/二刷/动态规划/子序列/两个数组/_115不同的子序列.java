@@ -9,7 +9,7 @@ public class _115不同的子序列 {
         }
         for (int i = 1; i <= s.length(); i++) {
             for (int j = 1; j <= t.length(); j++) {
-                //若相等，可以删除i
+                //若相等，可以删除i                                             (延续状态,删除s-1)
                 if (s.charAt(i - 1) == t.charAt(j - 1)) dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
                 else dp[i][j] = dp[i - 1][j];
             }
